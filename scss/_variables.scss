@@ -1,0 +1,23 @@
+// Variables
+// Gray and Brand Colors for use across theme
+$theme-primary: #F05F40;
+$gray-base: #000 !default;
+$gray-darker: lighten($gray-base, 13.5%) !default;
+$gray-dark: lighten($gray-base, 20%) !default;
+$gray: lighten($gray-base, 33.5%) !default;
+$gray-light: lighten($gray-base, 46.7%) !default;
+$gray-lighter: lighten($gray-base, 93.5%) !default;
+$mono-chrome-blue1: #26447F;
+$mono-chrome-blue2: #99BBFF;
+$mono-chrome-blue3: #4C88FF;
+$mono-chrome-blue4: #4C5E7F;
+$mono-chrome-blue5: #3D6DCC;
+$white-main: white;
+$white-alpha: #EBEBEC;
+$black-dark: #212121;
+$black-light: lighten($black-dark, 5.5%) !default;
+$midnight-grey: #30302e;
+$light-grey: #4f4c4c;
+$yellow-submarine: #c8c212;
+$white-gray: #888;
+$main-sec-color: #ffc107;

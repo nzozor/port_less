@@ -1,0 +1,31 @@
+// Styling for the portfolio section
+.port-details {
+    // font-family: Righteous, cursive;
+    margin: 20px 30px 60px 30px;
+    font-size: 1.2em;
+    // visibility: hidden;
+    div:nth-child(1) {
+        font-size: 55px;
+        display: inline-block;
+        border-bottom: 10px solid;
+    }
+}
+
+.visibility-visible {
+    visibility: visible;
+}
+
+.carousel {
+    img {
+        width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(129, 126, 126, 0.377), 0 6px 20px 0 rgba(71, 70, 70, 0.19);
+        border-radius: 5px;
+    }
+}
+
+.portfolio-box {
+    position: relative;
+    display: block;
+    max-width: 650px;
+    margin: 0 auto;
+}
