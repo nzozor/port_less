@@ -77,3 +77,7 @@
     // );
     // $("img").hide();
 })(jQuery); // End of use strict
+
+particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
+    console.log('particles.js loaded - callback');
+});
