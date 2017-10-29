@@ -3,10 +3,17 @@
     /* IE5+ */
     -webkit-filter: grayscale(1);
     /* Webkit Nightlies & Chrome Canary */
-    -webkit-transition: all .7s ease-in-out;
+    -webkit-transition: all .9s ease-in-out;
     &:hover {
         filter: none;
         -webkit-filter: grayscale(0);
         // -webkit-transform: scale(1.01);
     }
+}
+
+.addColor {
+    filter: none!important;
+    ;
+    -webkit-filter: grayscale(0)!important;
+    // -webkit-transform: scale(1.01);
 }

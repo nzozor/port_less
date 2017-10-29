@@ -67,6 +67,44 @@
             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
         }
     });
+    console.log($(".test").offset().top)
+    console.log($("img").offset().top)
+    console.log($(window).scrollTop())
+    console.log($(window).height())
+    $.fn.addClassDelay = function(className, delay) {
+        var $addClassDelayElement = $(this),
+            $addClassName = className;
+
+        setTimeout(function() {
+            $addClassDelayElement.addClass($addClassName);
+        }, delay);
+    };
+    $(window).scroll(
+        function() {
+            $('.item-img img').each(function() {
+                if (isScrolledIntoView($(this))) {
+                    $(this).addClassDelay('addColor', 1000);
+                    // $(this).addClass('addColor');
+                    // $(this).delay(1000).queue('fx', function() { $(this).addClass('addColor'); });
+                } else {
+                    $(this).removeClass('addColor');
+                }
+            });
+        });
+
+    function isScrolledIntoView(elem) {
+        var $elem = $(elem);
+        var $window = $(window);
+
+        var docViewTop = $window.scrollTop();
+        var docViewBottom = docViewTop + $window.height();
+
+        var elemTop = $elem.offset().top;
+        var elemBottom = elemTop + $elem.height();
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+    // if ()
     // $(".item-img img").hover(
     //     function() {
     //         $(this).next().addClass("visibility-visible");

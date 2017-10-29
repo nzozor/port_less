@@ -8,6 +8,10 @@ header.masthead {
     background-position: center;
     background-color: $black-dark;
     @include background-cover;
+    .btn-primary.focus,
+    .btn-primary:focus {
+        box-shadow: none;
+    }
     .header-content {
         position: relative;
         width: 100%;
