@@ -1,8 +1,11 @@
 .spinner {
+    @media (min-width: 768px) {
+        width: 100px;
+        height: 100px;
+        margin: -40px 0 0 -95px;
+    }
+    margin: 12px 0 0 -93px;
     position: absolute;
-    width: 100px;
-    height: 100px;
-    margin: -40px 0 0 -95px;
     left: 50%;
     top: 50%;
     z-index: 10;
