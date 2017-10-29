@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express();
 
-var port = 5000;
+var port = 3000;
 
 app.use(express.static('public'));
 app.use(express.static('node_modules/particles.js/'));
