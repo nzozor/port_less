@@ -6,7 +6,7 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
-
+var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 
 // Set the banner content
@@ -30,7 +30,7 @@ gulp.task('sass', function() {
         }))
         .pipe(sourcemaps.write())
 
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('./public/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -38,14 +38,14 @@ gulp.task('sass', function() {
 
 // Minify compiled CSS
 gulp.task('minify-css', ['sass'], function() {
-    return gulp.src('css/creative.css')
+    return gulp.src('public/css/creative.css')
         .pipe(cleanCSS({
             compatibility: 'ie8'
         }))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('./public/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -53,15 +53,16 @@ gulp.task('minify-css', ['sass'], function() {
 
 // Minify custom JS
 gulp.task('minify-js', function() {
-    return gulp.src('js/creative.js')
+    return gulp.src('./jsSource/**/*')
         .pipe(uglify())
         .pipe(header(banner, {
             pkg: pkg
         }))
+        .pipe(concat('creative.js'))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('js'))
+        .pipe(gulp.dest('./public/js'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -74,9 +75,9 @@ gulp.task('copy', function() {
             'node_modules/bootstrap/dist/**/*',
             '!**/npm.js',
             '!**/bootstrap-theme.*',
-            '!**/*.map'
+            '!**/*.map',
         ])
-        .pipe(gulp.dest('vendor/bootstrap'))
+        .pipe(gulp.dest('public.vendor/bootstrap'))
 
     gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
         .pipe(gulp.dest('vendor/jquery'))
@@ -102,6 +103,9 @@ gulp.task('copy', function() {
             '!node_modules/font-awesome/*.json'
         ])
         .pipe(gulp.dest('vendor/font-awesome'))
+    gulp.src(
+            'node_modules/particles.js/particles.js')
+        .pipe(gulp.dest('public/vendor/particles.js'))
 })
 
 // Default task
@@ -111,19 +115,20 @@ gulp.task('default', ['sass', 'minify-css', 'minify-js', 'copy']);
 gulp.task('browserSync', function() {
     browserSync.init({
         server: {
-            baseDir: ''
+            baseDir: './public'
         },
     })
 })
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
-    gulp.watch('scss/*.scss', ['sass']);
-    gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('js/*.js', ['minify-js']);
+    gulp.watch('scss/*.scss', ['sass', 'minify-css']);
+    // gulp.watch('css/*.css', ['minify-css']);
+    gulp.watch('jsSource/*.js', ['minify-js', browserSync.reload]);
     // Reloads the browser whenever HTML or JS files change
-    gulp.watch('*.html', browserSync.reload);
-    gulp.watch('js/**/*.js', browserSync.reload);
+    gulp.watch('public/*.html', browserSync.reload);
+    gulp.watch('jsSource/**/*.js', browserSync.reload);
+    gulp.watch('public/**/*', browserSync.reload);
 });
 
 
