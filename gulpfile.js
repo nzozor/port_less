@@ -80,19 +80,19 @@ gulp.task('copy', function() {
         .pipe(gulp.dest('public.vendor/bootstrap'))
 
     gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-        .pipe(gulp.dest('vendor/jquery'))
+        .pipe(gulp.dest('vendor/js/jquery'))
 
     gulp.src(['node_modules/magnific-popup/dist/*'])
-        .pipe(gulp.dest('vendor/magnific-popup'))
+        .pipe(gulp.dest('vendor/js/magnific-popup'))
 
     gulp.src(['node_modules/scrollreveal/dist/*.js'])
-        .pipe(gulp.dest('vendor/scrollreveal'))
+        .pipe(gulp.dest('vendor/js/scrollreveal'))
 
     gulp.src(['node_modules/popper.js/dist/umd/popper.js', 'node_modules/popper.js/dist/umd/popper.min.js'])
-        .pipe(gulp.dest('vendor/popper'))
+        .pipe(gulp.dest('vendor/js/popper'))
 
     gulp.src(['node_modules/jquery.easing/*.js'])
-        .pipe(gulp.dest('vendor/jquery-easing'))
+        .pipe(gulp.dest('vendor/js/jquery-easing'))
 
     gulp.src([
             'node_modules/font-awesome/**',
