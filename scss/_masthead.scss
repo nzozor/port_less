@@ -1,6 +1,6 @@
 // Styling for the masthead
 header.masthead {
-    position: relative;
+    // position: relative;
     width: 100%;
     min-height: auto;
     text-align: center;
@@ -16,6 +16,7 @@ header.masthead {
         .header-content-inner {
             h1 {
                 font-size: 30px;
+                letter-spacing: 0.05em;
                 font-weight: 700;
                 margin-top: 0;
                 margin-bottom: 0;
@@ -25,10 +26,12 @@ header.masthead {
                 margin: 30px auto;
             }
             p {
-                font-size: 16px;
+                // font-size: 16px;
                 font-weight: 300;
                 margin-bottom: 50px;
                 color: $white-gray;
+                font-weight: 500;
+                font-size: 1.3em;
             }
         }
     }
@@ -50,7 +53,7 @@ header.masthead {
                     font-size: 50px;
                 }
                 p {
-                    font-size: 1.5em;
+                    text-transform: uppercase;
                     max-width: 80%;
                     margin-right: auto;
                     margin-left: auto;

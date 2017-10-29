@@ -13,7 +13,7 @@ body {
 
 hr {
     max-width: 50px;
-    border-width: 3px;
+    border-width: 8px;
     border-color: $main-sec-color;
 }
 
@@ -41,7 +41,8 @@ h6 {
 }
 
 h2 {
-    font-size: 4em;
+    font-size: 3em;
+    text-transform: uppercase;
 }
 
 p {
@@ -97,4 +98,11 @@ body {
 
 #particles-js {
     background-color: inherit;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
 }
