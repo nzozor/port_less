@@ -37,15 +37,22 @@ gulp.task('sass', function() {
 });
 
 // Minify compiled CSS
-gulp.task('minify-css', ['sass'], function() {
-    return gulp.src('public/css/creative.css')
-        .pipe(cleanCSS({
+gulp.task('minify-css', function() {
+    return gulp.src('scss/creative.scss')
+        .pipe(sass())
+
+    .pipe(cleanCSS({
             compatibility: 'ie8'
         }))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./public/css'))
+
+    .pipe(header(banner, {
+        pkg: pkg
+    }))
+
+    .pipe(gulp.dest('./public/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -132,7 +139,7 @@ gulp.task('dev', ['browserSync', 'sass', 'minify-js'], function() {
 });
 
 
-gulp.task('build', ['sass', 'minify-css', 'minify-js'], function() {
+gulp.task('build', ['minify-css', 'minify-js'], function() {
     // gulp.watch('scss/*.scss', ['sass']);
     // gulp.watch('css/*.css', ['minify-css']);
     // gulp.watch('js/*.js', ['minify-js']);
