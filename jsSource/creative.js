@@ -79,18 +79,18 @@
             $addClassDelayElement.addClass($addClassName);
         }, delay);
     };
-    // $(window).scroll(
-    //     function() {
-    //         $('.item-img img').each(function() {
-    //             if (isScrolledIntoView($(this))) {
-    //                 $(this).addClassDelay('addColor', 1000);
-    //                 // $(this).addClass('addColor');
-    //                 // $(this).delay(1000).queue('fx', function() { $(this).addClass('addColor'); });
-    //             } else {
-    //                 $(this).removeClass('addColor');
-    //             }
-    //         });
-    //     });
+    $(window).scroll(
+        function() {
+            $('.item-img img').each(function() {
+                if (isScrolledIntoView($(this))) {
+                    $(this).addClassDelay('addColor', 1000);
+                    // $(this).addClass('addColor');
+                    // $(this).delay(1000).queue('fx', function() { $(this).addClass('addColor'); });
+                } else {
+                    $(this).removeClass('addColor');
+                }
+            });
+        });
 
     function isScrolledIntoView(elem) {
         var $elem = $(elem);

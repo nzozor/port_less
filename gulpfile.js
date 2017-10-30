@@ -27,8 +27,10 @@ gulp.task('sass', function() {
             pkg: pkg
         }))
         .pipe(sourcemaps.write())
-
-    .pipe(gulp.dest('./public/css'))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('./public/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -119,8 +121,8 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
-    gulp.watch('scss/*.scss', ['sass', 'minify-css']);
+gulp.task('dev', ['browserSync', 'sass', 'minify-js'], function() {
+    gulp.watch('scss/*.scss', ['sass']);
     // gulp.watch('css/*.css', ['minify-css']);
     gulp.watch('jsSource/*.js', ['minify-js', browserSync.reload]);
     // Reloads the browser whenever HTML or JS files change
@@ -131,8 +133,8 @@ gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() 
 
 
 gulp.task('build', ['sass', 'minify-css', 'minify-js'], function() {
-    gulp.watch('scss/*.scss', ['sass']);
-    gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('js/*.js', ['minify-js']);
+    // gulp.watch('scss/*.scss', ['sass']);
+    // gulp.watch('css/*.css', ['minify-css']);
+    // gulp.watch('js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
 });

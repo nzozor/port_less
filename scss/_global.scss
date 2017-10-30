@@ -106,3 +106,18 @@ body {
     left: 0;
     z-index: 0;
 }
+
+#about {
+    p {
+        font-size: 1.2em;
+    }
+}
+
+.keep-in-touch {
+    max-width: 550px;
+    padding-top: 30px;
+    .phone {
+        pointer-events: none;
+        cursor: default;
+    }
+}
