@@ -9,6 +9,10 @@ body {
     // @include serif-font;
     font-family: 'Work Sans', sans-serif;
     background-color: $black-dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: "liga" on;
 }
 
 hr {

@@ -74,7 +74,21 @@ gulp.task('minify-js', function() {
             stream: true
         }))
 });
-
+// Concat Js
+gulp.task('concat-js', function() {
+    return gulp.src('./jsSource/**/*')
+        .pipe(header(banner, {
+            pkg: pkg
+        }))
+        .pipe(concat('creative.js'))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('./public/js'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
 // Copy vendor files from /node_modules into /vendor
 // NOTE: requires `npm install` before running!
 gulp.task('copy', function() {
@@ -128,10 +142,11 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'sass', 'minify-js'], function() {
+gulp.task('dev', ['browserSync', 'sass', 'concat-js'], function() {
     gulp.watch('scss/*.scss', ['sass']);
     // gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('jsSource/*.js', ['minify-js', browserSync.reload]);
+    // gulp.watch('jsSource/*.js', ['minify-js', browserSync.reload]);
+    gulp.watch('jsSource/*.js', ['concat-js', browserSync.reload]);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('public/*.html', browserSync.reload);
     gulp.watch('jsSource/**/*.js', browserSync.reload);
