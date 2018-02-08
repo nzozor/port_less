@@ -16,17 +16,27 @@ var banner = ['/*!\n',
     ''
 ].join('');
 
+var config = {
+    bootstrapDir: './bower_components/bootstrap-sass',
+    publicDir: './public',
+};
+
 // Compiles SCSS files from /scss into /css
+var autoprefixer = require('gulp-autoprefixer');
+
 gulp.task('sass', function() {
     return gulp.src('scss/creative.scss')
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
 
-    .pipe(sass())
+        .pipe(sass({
+            includePaths: [config.bootstrapDir + '/assets/stylesheets'],
+        }))
 
     .pipe(header(banner, {
             pkg: pkg
         }))
-        .pipe(sourcemaps.write())
+        // .pipe(sourcemaps.write())
+        .pipe(autoprefixer())
         .pipe(rename({
             suffix: '.min'
         }))
@@ -37,9 +47,12 @@ gulp.task('sass', function() {
 });
 
 // Minify compiled CSS
+
 gulp.task('minify-css', function() {
     return gulp.src('scss/creative.scss')
-        .pipe(sass())
+    .pipe(sass({
+        includePaths: [config.bootstrapDir + '/assets/stylesheets'],
+    }))
 
     .pipe(cleanCSS({
             compatibility: 'ie8'
@@ -139,7 +152,7 @@ gulp.task('dev', ['browserSync', 'sass', 'minify-js'], function() {
 });
 
 
-gulp.task('build', ['minify-css', 'minify-js'], function() {
+gulp.task('build', ['minify-css', 'minify-js','copy'], function() {
     // gulp.watch('scss/*.scss', ['sass']);
     // gulp.watch('css/*.css', ['minify-css']);
     // gulp.watch('js/*.js', ['minify-js']);
