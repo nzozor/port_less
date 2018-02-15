@@ -54,7 +54,7 @@
         }
         .navbar-nav>li.nav-item>a.nav-link,
         .navbar-nav>li.nav-item>a.nav-link:focus {
-            color: #47de10;
+            color: #60deef;
             &:hover {
                 color: $white-gray;
             }
@@ -67,16 +67,16 @@
                 // color: $theme-primary;
                 &:focus,
                 &:hover {
-                    color: $mono-chrome-blue4;
+                    color: #60deef;
                 }
             }
-            .navbar-nav>li.nav-item>a.nav-link,
-            .navbar-nav>li.nav-item>a.nav-link:focus {
-                // color:  $white-main;
-                &:hover {
-                    color: $main-sec-color;
-                }
-            }
+            // .navbar-nav>li.nav-item>a.nav-link,
+            // .navbar-nav>li.nav-item>a.nav-link:focus {
+            //     // color:  $white-main;
+            //     &:hover {
+            //         color: $main-sec-color;
+            //     }
+            // }
         }
     }
 }
